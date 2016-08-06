@@ -1,5 +1,6 @@
-require "undecided/version"
-
+require 'undecided/version'
+require 'undecided/decider'
+require 'undecided/evaluator'
+require 'undecided/converter'
 module Undecided
-  # Your code goes here...
 end
