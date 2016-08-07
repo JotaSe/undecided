@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Converter do
-  describe '#to_symbol' do
-    it 'convert arrays or hash keys to symbol' do
-      expect(true).to be true
-    end
+  let(:test_array) { %w(A B C D F) }
+  let(:test_hash) { { A: 1, B: 1, C: 0, D: 0, F: 0 } }
+  it 'convert arrays or hash keys to symbol' do
+    expect { throw Converter.to_symbol(test_array).first }.to throw_symbol
+    expect { throw Converter.to_symbol(test_hash).keys.first }.to throw_symbol
+    expect { throw Converter.to_symbol('A') }.to throw_symbol
+    expect { throw Converter.to_symbol(1) }.to throw_symbol
   end
 end
