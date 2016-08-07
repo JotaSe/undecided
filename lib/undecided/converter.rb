@@ -1,11 +1,14 @@
 # Convert data to required type
 class Converter
-  # Convert array and hash's keys to symbol
+  # Convert array, hash's keys or solo values to symbol
   def self.to_symbol(value)
     if value.is_a?(Array)
       value.map(&:to_sym)
-    else
+    elsif value.is_a? Hash
       value.map { |k, v| [k.to_sym, v] }.to_h
+    else
+      # for String and Number solo values
+      value.to_s.to_sym
     end
   end
 
