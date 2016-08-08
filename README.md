@@ -38,6 +38,7 @@ decider.decide(expression, values)
 ATM the available operators are:
 * & = AND
 * | = OR
+* ! = NOT
 * () = Grouper
 
 Imagine you have a todo list
