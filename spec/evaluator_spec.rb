@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Undecided::Evaluator do
-  let(:evaluator) { Undecided::Evaluator.new }
+  let(:evaluator) { Undecided::Evaluator }
   let(:valid_expression) { 'A&B&!C|(!C|!A)|D&F' }
   let(:invalid_expression) { '!!!!!!' }
   let(:valid_values) { { A: 1, B: 1, C: 0, D: 0, F: 0 } }

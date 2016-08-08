@@ -9,4 +9,9 @@ describe Converter do
     expect { throw Converter.to_symbol('A') }.to throw_symbol
     expect { throw Converter.to_symbol(1) }.to throw_symbol
   end
+
+  it 'convert hash values to boolean type' do
+    expect(Converter.hash_values_to_bool(a: 1).values.first).to eql(true)
+    expect(Converter.hash_values_to_bool(a: 0).values.first).to eql(false)
+  end
 end
