@@ -28,8 +28,9 @@ class Converter
     # if boolean return value
     return value if Undecided::Evaluator.bool?(value)
     # transform integer value to boolean
-    !value.zero?
-  rescue
+    !value.to_i.zero?
+  rescue => e
+    puts e.message
     raise "#{value} Is not a correct value, " \
           'insert (1 or 0) or (true or false)'
   end

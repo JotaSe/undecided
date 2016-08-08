@@ -10,7 +10,8 @@ module Undecided
       # Eval rules and values after process it, with safe data
       final_expression = Converter.replacing_variables(rule, values)
       eval final_expression
-    rescue
+    rescue => e
+      puts e.message
       error
     end
 
