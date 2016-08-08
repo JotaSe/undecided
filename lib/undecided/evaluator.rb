@@ -3,9 +3,8 @@ module Undecided
   class Evaluator
     # REGEX that match operators
     VARIABLE_REGEX = /\&|\||\(|\)|!/
-
     # Check if rule and values are valid to evaluate
-    def valid?(rule, values)
+    def self.valid?(rule, values)
       # Extract variables from rule
       variables = extract_variables(rule)
 
@@ -15,12 +14,12 @@ module Undecided
     end
 
     # Check if value is a boolean type
-    def bool?(value)
+    def self.bool?(value)
       [true, false].include? value
     end
 
     # Apply regex to rule to extract variables
-    def extract_variables(rule)
+    def self.extract_variables(rule)
       Converter.to_symbol(rule.split(VARIABLE_REGEX).reject(&:empty?).uniq)
     end
   end
