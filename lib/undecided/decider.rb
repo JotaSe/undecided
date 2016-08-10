@@ -4,8 +4,8 @@ module Undecided
   # Evaluate boolean expression
   class Decider
     # Given a boolean expression and data to replace, return result
-    def decide(rule, values)
-      error unless Undecided::Evaluator.valid?(rule, values)
+    def decide(rule, values, strict = true)
+      error unless Undecided::Evaluator.valid?(rule, values, strict)
       # Sanitize data
       # Eval rules and values after process it, with safe data
       final_expression = Converter.replacing_variables(rule, values)
