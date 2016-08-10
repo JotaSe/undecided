@@ -6,6 +6,7 @@ describe Undecided::Evaluator do
   let(:invalid_expression) { '!!!!!!' }
   let(:valid_values) { { A: 1, B: 1, C: 0, D: 0, F: 0 } }
   let(:invalid_values) { { A: 'asd', H: -1 } }
+  let(:incomplete) { { D: 1, F: 1 } }
 
   it 'check if boolean type' do
     expect(false).to eq evaluator.bool?(1)
@@ -24,5 +25,9 @@ describe Undecided::Evaluator do
     expect(false).to eq evaluator.valid?(valid_expression, invalid_values)
     expect(false).to eq evaluator.valid?(invalid_expression, invalid_values)
     expect(false).to eq evaluator.valid?(invalid_expression, valid_values)
+  end
+
+  it 'check incomplete parameters' do
+    expect(true).to eq evaluator.valid?(valid_expression, incomplete, false)
   end
 end
