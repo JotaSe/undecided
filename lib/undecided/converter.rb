@@ -28,10 +28,15 @@ class Converter
     # if boolean return value
     return value if Undecided::Evaluator.bool?(value)
     # transform integer value to boolean
+    error(value) unless [0, 1].include? value
     !value.to_i.zero?
   rescue => e
     puts e.message
-    raise "#{value} Is not a correct value, " \
+    error value
+  end
+
+  def self.error(value)
+    raise Undecided::DeciderError, "#{value} Is not a correct value, " \
           'insert (1 or 0) or (true or false)'
   end
 
