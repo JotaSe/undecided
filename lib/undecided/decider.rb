@@ -5,6 +5,8 @@ module Undecided
   class Decider
     # Given a boolean expression and data to replace, return result
     def decide(rule, values, strict = true)
+      rule = rule.clone
+      values = values.clone
       error unless Undecided::Evaluator.valid?(rule, values, strict)
       # Sanitize data
       # Eval rules and values after process it, with safe data
